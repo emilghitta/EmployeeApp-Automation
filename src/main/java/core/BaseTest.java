@@ -45,10 +45,14 @@ public class BaseTest {
             log.info("Performing authentication flow with valid credentials as a test precondition");
             page.loginFlow.authenticate(validEmail,validPassword);
 
-            /* Force authentication when error message was displayed event though valid credentials were sent */
-            while(page.loginPage.isErrorMessageDisplayed()){
+            /* Force authentication when error message was displayed event though valid credentials were sent.
+            *  Also using a counter so we do fail this if to many attempts are made.
+            */
+            int counter = 0;
+            while(page.loginPage.isErrorMessageDisplayed() && counter <= 3){
                 driver.navigate().refresh();
                 page.loginFlow.authenticate(validEmail,validPassword);
+                counter++;
             }
         }
         wait = new WebDriverWait(driver, 5);
