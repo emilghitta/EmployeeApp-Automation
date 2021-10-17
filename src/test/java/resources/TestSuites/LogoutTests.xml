@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="AlertElement" verbose="1" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="core.Listeners"/>
+    </listeners>
+
+    <parameter name="testPage" value="http://89.33.132.18:8787/#/"/>
+    <parameter name="validEmail" value="aa@aa.com"/>
+    <parameter name="validPassword" value="aaaaa"/>
+
+    <test name="Positive Logout Tests">
+
+        <groups>
+            <run>
+                <include name="positiveLogoutTest"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.Logout.LogoutTests">
+            </class>
+        </classes>
+    </test>
+
+</suite>

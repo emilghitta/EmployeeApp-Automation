@@ -1,0 +1,60 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="AddUser" verbose="1" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="core.Listeners"/>
+    </listeners>
+
+    <parameter name="testPage" value="http://89.33.132.18:8787/#/"/>
+    <parameter name="validEmail" value="aa@aa.com"/>
+    <parameter name="validPassword" value="aaaaa"/>
+    <parameter name="cssAttribute" value="color"/>
+
+    <test name="Positive add user tests">
+        <parameter name="firstName" value="Emil"/>
+        <parameter name="lastName" value="Test"/>
+        <parameter name="company" value="MyCompany"/>
+        <parameter name="phone" value="+40075589874"/>
+        <parameter name="validMail" value="emilgtesting@gmail.com"/>
+        <parameter name="validBirthDay" value="02/04/1993"/>
+        <groups>
+            <run>
+                <include name="positiveAddUserTest"/>
+                <include name="userDeletion"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.AddUser.AddAndDeleteUser">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Negative add user tests">
+        <parameter name="noFirstName" value=""/>
+        <parameter name="noLastName" value=""/>
+
+        <parameter name="firstName" value="Emil"/>
+        <parameter name="lastName" value="Test"/>
+        <parameter name="company" value="MyCompany"/>
+
+        <parameter name="phone" value="+40075589874"/>
+        <parameter name="invalidPhone" value="+0785895hy."/>
+        <parameter name="invalidPhone2" value="0785895858485"/>
+
+        <parameter name="validMail" value="emilgtesting@gmail.com"/>
+        <parameter name="invalidEmail" value="emilgtestgmail.com"/>
+
+        <parameter name="validBirthDay" value="02/04/1993"/>
+        <parameter name="invalidBirthDay" value="02/041993"/>
+        <parameter name="invalidBirthDay2" value="02/04/2050"/>
+
+        <groups>
+            <run>
+                <include name="negativeAddUserTest"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.AddUser.AddAndDeleteUser">
+            </class>
+        </classes>
+    </test>
+</suite>
