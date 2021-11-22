@@ -31,7 +31,7 @@ public class BaseTest {
         log = LogManager.getLogger(testName);
 
         BrowserDriverFactory factory = new BrowserDriverFactory(log);
-        driver = factory.createDriver(DriverTypes.CHROME);
+        driver = factory.createDriver(DriverTypes.FIREFOX);
         page = new Page(driver);
         driver.get(testPage);
 

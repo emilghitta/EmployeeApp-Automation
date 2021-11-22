@@ -21,6 +21,16 @@ public class MainPage extends HeaderPage {
     private By allTableRows = By.xpath("//tbody/tr");
 
 
+
+//    private By relevantTableFirstNameCell(String unique){
+//        return By.xpath("//td[contains(text(),'"+unique+"')]");
+//    }
+
+    // Nice thing ^
+
+
+
+
     /* Button locators */
     private By newUserButton = By.xpath("//app-employee/button");
     private By editButtons = By.xpath("//span[contains(text(),'edit')]/..");
